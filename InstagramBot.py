@@ -45,7 +45,7 @@ class instaBot(object):
                 post_list.append(link)
             i+=1
 
-        # for loop that goes to each post and sleeps on the page for 2 seconds
+        # looping through each post
         for post in post_list:
             self.driver.get(post)
             time.sleep(2)
@@ -93,12 +93,9 @@ class instaBot(object):
                 follow_btn = self.driver.find_element_by_class_name('L3NKy')
                 # if the page can be followed / isn't already followed
                 if (follow_btn.text == 'Follow'):
-                    # liking posts and following
-                    # print('Were in!!')
+                    # like the first post on the account
                     time.sleep(2)
                     posts = self.driver.find_elements_by_class_name('kIKUG')
-                    
-                    
                     posts[0].click()
                     time.sleep(1)
                     self.driver.find_element_by_class_name('ltpMr').find_element_by_class_name("wpO6b").click()
@@ -107,12 +104,14 @@ class instaBot(object):
                     WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'kIKUG')))
                     posts = self.driver.find_elements_by_class_name('kIKUG')
                     time.sleep(1)
+                    # for accounts with more than one post like the second
                     if (len(posts) >= 2):
                         posts[1].click()
                         time.sleep(1)
                         self.driver.find_element_by_class_name('ltpMr').find_element_by_class_name("wpO6b").click()
                         time.sleep(1)
                     self.driver.get(link)
+                    # follow account
                     WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'L3NKy')))
                     follow_btn = self.driver.find_element_by_class_name('L3NKy')
                     follow_btn.click()
@@ -151,9 +150,3 @@ username = 'therandlehandle'
 password = 'Buster4!'
 searchterms = 'goose'
 instaBot(username, password, searchterms)
-
-# implement this for constant running (will run once every 24h)
-
-# while True :
-#     instaBot(username, password, searchterms)
-#     time.sleep(86400)
