@@ -146,7 +146,7 @@ class instaBot(object):
                 print(e)
 
 #add credentials here along with some search terms
-username = 'therandlehandle'
-password = 'Buster4!'
-searchterms = 'goose'
+username = 'USERNAME'
+password = 'PASSWORD'
+searchterms = 'SEARCHTERMS'
 instaBot(username, password, searchterms)
