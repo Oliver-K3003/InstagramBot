@@ -124,17 +124,14 @@ class instaBot(object):
                         WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, 'textarea')))
                         self.driver.find_element_by_tag_name('textarea').send_keys("Ya like geese? Me too!")
                         time.sleep(3)
-                        # print('entered text')
 
                         # handling popup
                         if (self.driver.find_elements_by_class_name('aOOlW')):
                             WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'aOOlW')))
                             self.driver.find_element_by_class_name('aOOlW').click()
-                            #print('past the popup')
                         # pressing the send button
                         WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'sqdOP')))
                         self.driver.find_element_by_class_name('JI_ht').click()
-                        # print('past send')
                         
                         message_count += 1
                         time.sleep(1)
